@@ -14,7 +14,7 @@ This project is a web-based image classification system that uses pre-trained de
 - [Model Training](#model-training)
 - [Dataset](#dataset)
 - [How It Works](#how-it-works)
-- [File Structure](#file-structure)
+- [File Structure (Local machine)](#file-structure)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
