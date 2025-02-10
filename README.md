@@ -14,7 +14,7 @@ This project is a web-based image classification system that uses pre-trained de
 - [Model Training](#model-training)
 - [Dataset](#dataset)
 - [How It Works](#how-it-works)
-- [File Structure (Local machine)](#file-structure)
+- [File Structure](#file-structure)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -94,21 +94,35 @@ The system uses the CIFAR-100 dataset, which contains 100 classes with 600 image
 2.  **Choose a Model:** Users can select one of the available pre-trained models.
 3.  **Click "Predict":** The system processes the image using the chosen model and returns the predicted class label.
 
-## File Structure (Local machine)
+## File Structure 
+In Local machine
 
-Folder name /
+Folder name / 
+
 ├── app.py          # Main Flask application file
+
 ├── templates/      # HTML templates
+
 │   ├── index.html
+
 │   ├── about.html
+
 │   └── contact.html
+
 ├── static/         # Static files (CSS, images)
+
 │   ├── style.css
+
 │   ├── logo.png
+
 │   ├── about_bg.jpg
+
 │   ├── contact_bg.jpg
+
 │   └── ... (other images)
+
 └── requirements.txt  # Project dependencies
+
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
