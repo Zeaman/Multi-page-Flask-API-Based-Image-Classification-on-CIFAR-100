@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Classifier</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='bg_two.jpg') }}");
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            padding: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .title {
+            color: white;
+            padding-left: 10px;
+            font-size: 1.2em;
+            text-decoration: none;
+        }
+
+        .navbar a {
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            border-radius: 10px;
+            background-color: #0056b3;
+        }
+
+        .navbar a.active {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .nav-links {
+            display: flex;
+            margin-right: 10px;
+        }
+
+        .container {
+            background-color: rgba(128, 128, 128, 0.8);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: block;
+            width: 40%;
+            margin: 20px auto;
+            align-items: center;
+            text-align: center; /* Center the form and image */
+        }
+
+        .container form {
+            display: inline-block; /* Optional: Helps with centering if needed */
+        }
+
+        .container img {
+            display: block;
+            margin: 10px auto; /* Centers the image */
+            max-width: 300px;
+            border-radius: 5px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        img {
+            max-width: 300px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        button,
+        input[type="submit"],
+        select {
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button:hover,
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .button-container {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+        }
+
+        .nav-button {
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" class="title">Image Classifier</a>
+        <div class="nav-links">
+            <a href="/" {% if request.path == '/' %}class="active"{% endif %}>Home</a>
+            <a href="/about" {% if request.path == '/about' %}class="active"{% endif %}>About</a>
+            <a href="/contact" {% if request.path == '/contact' %}class="active"{% endif %}>Contact</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Upload and Classify</h2>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit" value="Upload">
+        </form>
+
+        {% if image_path %}
+        <img src="{{ image_path }}" alt="Uploaded Image">
+        <form action="/predict" method="post">
+            <input type="hidden" name="image_path" value="{{ image_path }}">
+            <br>
+            <label for="model">Select Model:</label>
+            <select name="model" id="model">
+                <option value="b0">EfficientNet-B0</option>
+                <option value="b1">EfficientNet-B1</option>
+                <option value="resnet50">ResNet50</option>
+            </select>
+            <br><br>
+            <button type="submit">Predict</button>
+        </form>
+        {% endif %}
+
+        {% if prediction %}
+        <h3>{{ prediction }}</h3>
+        {% endif %}
+    </div>
+
+    <div class="button-container">
+        <a href="/contact" class="nav-button">📞 Contact Us</a>
+        <a href="/about" class="nav-button">ℹ️ About</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About - Image Classifier System</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='about_bg.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            padding: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .title {
+            color: white;
+            padding-left: 10px;
+            font-size: 1.2em;
+            text-decoration: none;
+        }
+
+        .navbar a {
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            border-radius: 10px;
+            background-color: #0056b3;
+        }
+
+        .navbar a.active {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .nav-links {
+            display: flex;
+            margin-right: 10px;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 900px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+            margin: 20px auto;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #28a745;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .section {
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        .section img {
+            display: block;
+            width: 80%;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+
+        .section img.last-image {
+            max-width: 450px;
+            height: 400px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .button {
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .dataset-link {
+            color: #00ffcc;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .dataset-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" class="title">Image Classifier</a>
+        <div class="nav-links">
+            <a href="/" {% if request.path == '/' %}class="active"{% endif %}>Home</a>
+            <a href="/about" {% if request.path == '/about' %}class="active"{% endif %}>About</a>
+            <a href="/contact" {% if request.path == '/contact' %}class="active"{% endif %}>Contact</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>About This System</h1>
+
+        <div class="section">
+            <h2>🔍 Model Training</h2>
+            <ul>
+                <li>We trained <strong>EfficientNet-B0</strong>, <strong>EfficientNet-B1</strong> and <strong>ResNet50</strong> models using the <strong>CIFAR-100 dataset</strong>.</li>
+                <li>Each model was trained with different epochs:
+                    <ul>
+                        <li>EfficientNet-B0: <strong>10 to 40 epochs</strong></li>
+                        <li>EfficientNet-B1: <strong>10 to 20 epochs</strong></li>
+                        <li>ResNet50: <strong>10 to 20 epochs</strong></li>
+                    </ul>
+                    using a batch size of 16 for EfficientNet-B1 and 32 for EfficientNet-B0.
+                </li>
+                <li>The models were optimized using the Adam optimizer and CrossEntropyLoss.</li>
+                <li>EfficientNet-B0 training log-1 (30 epochs):
+                    <img src="{{ url_for('static', filename='efficientnetb0_30.png') }}" alt="Training Process">
+                </li>
+                <li>EfficientNet-B0 training log-2 (40 epochs):
+                    <img src="{{ url_for('static', filename='train_40.png') }}" alt="Training Process">
+                </li>
+                <li>ResNet50 training log-1 (40 epochs):
+                    <img src="{{ url_for('static', filename='resnet50_40.png') }}" alt="Training Process">
+                </li>
+                <li>ResNet50 training log-1 Accuracy Plots:
+                    <img src="{{ url_for('static', filename='resnet50_plot_40.png') }}" alt="Training Process">
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📂 Dataset</h2>
+            <ul>
+                <li>The <strong>CIFAR-100</strong> dataset contains <strong>100 classes</strong> with <strong>600 images per class</strong> (500 for training, 100 for testing).</li>
+                <li>Images are resized to <strong>32×32 pixels</strong> for EfficientNet-B0, <strong>240×240 pixels</strong> for EfficientNet-B1 and <strong>240×240 pixels</strong> for ResNet50.</li>
+                <li>For more details, visit the official CIFAR-100 dataset page:
+                    <a href="https://www.cs.toronto.edu/~kriz/cifar.html" target="_blank" class="dataset-link">CIFAR-100 Dataset</a>
+                    <img src="{{ url_for('static', filename='cifar100.png') }}" alt="CIFAR-100 Dataset Classes">
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>⚙️ How It Works</h2>
+            <ul>
+                <li><strong>1. Upload an Image</strong>: Select an image from your device.</li>
+                <li><strong>2. Choose a Model</strong>: Pick **EfficientNet-B0** (faster, lower accuracy) or **EfficientNet-B1** (higher accuracy, more computation).</li>
+                <li><strong>3. Click "Predict"</strong>: The system will classify the image into one of the 100 categories.
+                    <img src="{{ url_for('static', filename='predicted_orange.png') }}" alt="User Interface" class="last-image">
+                </li>
+            </ul>
+        </div>
+
+        <div class="button-container">
+            <a href="/" class="button">🏠 Home</a>
+            <a href="/contact" class="button">📞 Contact</a>

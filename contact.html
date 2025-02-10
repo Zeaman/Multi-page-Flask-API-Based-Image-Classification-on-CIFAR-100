@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='contact_bg.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            padding: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .title {
+            color: white;
+            padding-left: 10px;
+            font-size: 1.2em;
+            text-decoration: none;
+        }
+
+        .navbar a {
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            border-radius: 10px;
+            background-color: #0056b3;
+        }
+
+        .navbar a.active {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .nav-links {
+            display: flex;
+            margin-right: 10px;
+        }
+
+        .container {
+            background-color: rgba(128, 128, 128, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: 10px;
+            width: 40%;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .button {
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            margin: 5px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="/" class="title">Image Classifier</a>
+        <div class="nav-links">
+            <a href="/" {% if request.path == '/' %}class="active"{% endif %}>Home</a>
+            <a href="/about" {% if request.path == '/about' %}class="active"{% endif %}>About</a>
+            <a href="/contact" {% if request.path == '/contact' %}class="active"{% endif %}>Contact</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p><strong>Developer:</strong> Amanuel Mihiret (MSc. in Mechatronics Engineering)</p>
+        <p><strong>Email:</strong> zeaman44@gmail.com</p>
+        <p><strong>Institutional Email:</strong> amanmih@dtu.edu.et</p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/Zeaman" target="_blank">github.com</a></p>
+        <p><strong>Kaggle:</strong> <a href="https://www.kaggle.com/zeaman44" target="_blank">kaggle.com</a></p>
+        <p><strong>YouTube:</strong> <a href="https://www.youtube.com/@YomTech44" target="_blank">YouTube</a></p> 
+        <p><strong>Upwork:</strong> <a href="https://www.upwork.com/freelancers/~018267dd30abf9c4db" target="_blank">upwork.com</a></p>
+
+        <div class="button-container">
+            <a href="/" class="button">🏠 Home</a>
+            <a href="/about" class="button">ℹ️ About</a>
+        </div>
+    </div>
+</body>
+</html>
