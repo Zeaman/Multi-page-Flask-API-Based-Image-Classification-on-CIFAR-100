@@ -154,6 +154,6 @@ SOFTWARE.
 ## Contact
 
 Amanuel Mihiret (MSc. in Mechatronics Engineering)
-zeaman44@gmail.com
+zeaman44@gmail.com,
 amanmih@dtu.edu.et
 
