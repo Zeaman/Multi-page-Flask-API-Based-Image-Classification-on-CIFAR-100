@@ -1,5 +1,4 @@
-# Multi-page and multi-model Flask-based Image Classification with EfficientNet on CIFAR-100
-# Image Classifier System
+# Multi-page and multi-model Flask-based Image Classification with EfficientNet on CIFAR-100 (Image Classifier System)
 
 This project is a web-based image classification system that uses pre-trained deep learning models to categorize images into one of 100 classes from the CIFAR-100 dataset.  It provides a user-friendly interface for uploading images and selecting different models for prediction.
 
