@@ -44,13 +44,13 @@ This image classifier system allows users to upload an image, choose from a sele
 1.  Clone the repository:
 
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git](https://www.google.com/search?q=https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git)
+    git clone [https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git](https://github.com/Zeaman/Multi-page-Flask-API-Based-Image-Classification-on-CIFAR-100.git)
     ```
 
 2.  Navigate to the project directory:
 
     ```bash
-    cd YOUR_REPOSITORY_NAME
+    cd Multi-page-Flask-API-Based-Image-Classification-on-CIFAR-100
     ```
 
 3.  Create a virtual environment (recommended):
